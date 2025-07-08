@@ -1,10 +1,9 @@
 package com.example.service;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 import com.example.client.PaymentClient;
+import com.example.dto.OrderRequestDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,11 +13,11 @@ public class PaymentService {
 
     private final PaymentClient paymentClient;
 
-    public void deduct(Map<String, Object> context) {
-    	paymentClient.deduct(context);
+    public void deduct(OrderRequestDTO dto) {
+    	paymentClient.deduct(dto);
     }
     
-    public void compensate(Map<String, Object> context) {
-    	paymentClient.compensate(context);
+    public void compensate(OrderRequestDTO dto) {
+    	paymentClient.compensate(dto);
     }
 }

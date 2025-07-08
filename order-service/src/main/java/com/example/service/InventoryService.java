@@ -1,10 +1,9 @@
 package com.example.service;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Service;
 
 import com.example.client.InventoryClient;
+import com.example.dto.OrderRequestDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -14,11 +13,11 @@ public class InventoryService {
 
     private final InventoryClient inventoryClient;
 
-    public void deduct(Map<String, Object> context) {
-        inventoryClient.deduct(context);
+    public void deduct(OrderRequestDTO dto) {
+        inventoryClient.deduct(dto);
     }
     
-    public void compensate(Map<String, Object> context) {
-        inventoryClient.compensate(context);
+    public void compensate(OrderRequestDTO dto) {
+        inventoryClient.compensate(dto);
     }
 }
