@@ -1,9 +1,0 @@
-com\example\client\PaymentClient.class
-com\example\config\StateMachineEngineHolderConfig.class
-com\example\service\InventoryService.class
-com\example\controller\OrderSagaController.class
-com\example\config\SagaConfig.class
-com\example\config\SeataBeanConfig.class
-com\example\service\PaymentService.class
-com\example\OrderServiceApplication.class
-com\example\client\InventoryClient.class
