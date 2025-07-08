@@ -1,0 +1,51 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/seata_saga_demo?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: loma
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  groovy:
+    template:
+      enabled: false
+
+seata:
+  enabled: true
+  tx-service-group: order-saga-group
+
+  registry:
+    type: file
+    file:
+      name: registry
+
+  config:
+    type: file
+    file:
+      name: file
+
+  service:
+    vgroup-mapping:
+      order-saga-group: default
+    grouplist:
+      default: 127.0.0.1:8091
+
+  saga:
+    state-machine:
+      enabled: true
+      dir: classpath:statelang
+      resource-postfix: .json
+
+logging:
+  level:
+    io.seata.saga: DEBUG
+    io.seata.engine: DEBUG

@@ -1,0 +1,53 @@
+{
+  "Name": "order_saga",
+  "Comment": "Order creation Saga flow",
+  "Version": "1.2",
+  "Type": "STATE_LANG",
+  "StartState": "deductInventory",
+  "States": {
+    "deductInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryService",
+      "ServiceMethod": "deduct",
+      "Input": [
+          "$.[context]"
+      ],
+      "CompensateState": "revertInventory",
+      "Next": "makePayment",
+      "Retries": 1,
+      "Timeout": 60000
+    },
+    "makePayment": {
+      "Type": "ServiceTask",
+      "ServiceName": "paymentService",
+      "ServiceMethod": "deduct",
+      "Input": [
+          "$.[context]"
+      ],
+      "CompensateState": "refundPayment",
+      "End": true,
+      "Retries": 1,
+      "Timeout": 60000
+    },
+    "revertInventory": {
+      "Type": "ServiceTask",
+      "ServiceName": "inventoryService",
+      "ServiceMethod": "compensate",
+      "Input": [
+          "$.[context]"
+      ],
+      "Retries": 1,
+      "Timeout": 60000
+    },
+    "refundPayment": {
+      "Type": "ServiceTask",
+      "ServiceName": "paymentService",
+      "ServiceMethod": "compensate",
+      "Input": [
+          "$.[context]"
+      ],
+      "Retries": 1,
+      "Timeout": 60000
+    }
+  }
+}

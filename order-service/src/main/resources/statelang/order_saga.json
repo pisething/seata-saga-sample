@@ -10,11 +10,7 @@
       "ServiceName": "inventoryService",
       "ServiceMethod": "deduct",
       "Input": [
-        {
-          "Type": "java.util.Map",
-          "Name": "context",
-          "Expression": "#root"
-        }
+          "$.[context]"
       ],
       "CompensateState": "revertInventory",
       "Next": "makePayment",
@@ -26,11 +22,7 @@
       "ServiceName": "paymentService",
       "ServiceMethod": "deduct",
       "Input": [
-        {
-          "Type": "java.util.Map",
-          "Name": "context",
-          "Expression": "#root"
-        }
+          "$.[context]"
       ],
       "CompensateState": "refundPayment",
       "End": true,
@@ -42,11 +34,7 @@
       "ServiceName": "inventoryService",
       "ServiceMethod": "compensate",
       "Input": [
-        {
-          "Type": "java.util.Map",
-          "Name": "context",
-          "Expression": "#root"
-        }
+          "$.[context]"
       ],
       "Retries": 1,
       "Timeout": 60000
@@ -56,11 +44,7 @@
       "ServiceName": "paymentService",
       "ServiceMethod": "compensate",
       "Input": [
-        {
-          "Type": "java.util.Map",
-          "Name": "context",
-          "Expression": "#root"
-        }
+          "$.[context]"
       ],
       "Retries": 1,
       "Timeout": 60000
