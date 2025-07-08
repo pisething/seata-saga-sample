@@ -27,7 +27,16 @@
       "CompensateState": "refundPayment",
       "End": true,
       "Retries": 1,
-      "Timeout": 60000
+      "Timeout": 60000,
+	  "Status": {
+	      "$Exception{java.lang.Throwable}": "UN"
+	   },
+	  "Catch": [
+	      {
+	        "Exceptions": ["java.lang.Throwable"],
+	        "Next": "CompensationTrigger"
+	      }
+	    ]	  
     },
     "revertInventory": {
       "Type": "ServiceTask",
@@ -48,6 +57,16 @@
       ],
       "Retries": 1,
       "Timeout": 60000
-    }
+    },
+	"CompensationTrigger": {
+	  "Type": "CompensationTrigger",
+	  "Next": "Fail"
+	},
+	"Fail": {
+	  "Type": "Fail",
+	  "ErrorCode": "PURCHASE_FAILED",
+	  "Message": "purchase failed"
+	}
+
   }
 }
