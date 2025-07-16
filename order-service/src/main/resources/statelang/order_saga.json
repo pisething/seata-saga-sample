@@ -12,6 +12,14 @@
       "Input": [
           "$.[context]"
       ],
+	  "Output": {
+              "compensateReduceBalanceResult": "$.#root"
+          },
+          "Status": {
+              "#root == true": "SU",
+              "#root == false": "FA",
+              "$Exception{java.lang.Throwable}": "UN"
+          },
       "CompensateState": "revertInventory",
       "Next": "makePayment",
       "Retries": 1,
@@ -28,9 +36,14 @@
       "End": true,
       "Retries": 1,
       "Timeout": 60000,
-	  "Status": {
-	      "$Exception{java.lang.Throwable}": "UN"
-	   },
+	  "Output": {
+          "compensateReduceBalanceResult": "$.#root"
+      },
+      "Status": {
+          "#root == true": "SU",
+          "#root == false": "FA",
+          "$Exception{java.lang.Throwable}": "UN"
+      },
 	  "Catch": [
 	      {
 	        "Exceptions": ["java.lang.Throwable"],

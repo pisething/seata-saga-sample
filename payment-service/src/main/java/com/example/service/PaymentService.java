@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @Slf4j
 public class PaymentService {
-	public String deduct(OrderRequestDTO dto) {
+	public boolean deduct(OrderRequestDTO dto) {
 
 		log.info("Deduct Payment started : {}", dto);
 		// In case amount less than zero, there is no deduct payment
@@ -18,15 +18,15 @@ public class PaymentService {
 		}
 		String orderId = dto.getOrderId();
 		log.info("Payment deducted for order: {}", orderId);
-		return "Payment deducted";
+		return true;
 	}
 	
-	public String compensate(OrderRequestDTO dto) {
+	public boolean compensate(OrderRequestDTO dto) {
 
 		log.info("Compensate Deduct Payment started : {}", dto);
 		
 		String orderId = dto.getOrderId();
 		log.info("Payment compensation triggered for order: {}" , orderId);
-        return "Payment compensation successful";
+        return true;
 	}
 }

@@ -13,11 +13,11 @@ public class PaymentService {
 
     private final PaymentClient paymentClient;
 
-    public void deduct(OrderRequestDTO dto) {
-    	paymentClient.deduct(dto);
+    public boolean deduct(OrderRequestDTO dto) {
+    	return paymentClient.deduct(dto);
     }
     
-    public void compensate(OrderRequestDTO dto) {
-    	paymentClient.compensate(dto);
+    public boolean compensate(OrderRequestDTO dto) {
+    	return paymentClient.compensate(dto);
     }
 }

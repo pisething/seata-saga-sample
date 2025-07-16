@@ -19,12 +19,12 @@ public class PaymentController {
 	private final PaymentService paymentService;
 
     @PostMapping("/deduct")
-    public String deduct(@RequestBody OrderRequestDTO dto) {
+    public boolean deduct(@RequestBody OrderRequestDTO dto) {
         return paymentService.deduct(dto);
     }
 
     @PostMapping("/compensate")
-    public String compensate(@RequestBody OrderRequestDTO dto) {
+    public boolean compensate(@RequestBody OrderRequestDTO dto) {
         return paymentService.compensate(dto);
     }
 }

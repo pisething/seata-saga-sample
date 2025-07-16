@@ -13,11 +13,11 @@ public class InventoryService {
 
     private final InventoryClient inventoryClient;
 
-    public void deduct(OrderRequestDTO dto) {
-        inventoryClient.deduct(dto);
+    public boolean deduct(OrderRequestDTO dto) {
+        return inventoryClient.deduct(dto);
     }
     
-    public void compensate(OrderRequestDTO dto) {
-        inventoryClient.compensate(dto);
+    public boolean compensate(OrderRequestDTO dto) {
+        return inventoryClient.compensate(dto);
     }
 }

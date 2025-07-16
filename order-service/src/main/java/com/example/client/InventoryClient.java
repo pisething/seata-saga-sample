@@ -11,8 +11,8 @@ import com.example.dto.OrderRequestDTO;
 public interface InventoryClient {
 
     @PostMapping("/inventory/deduct")
-    String deduct(@RequestBody OrderRequestDTO dto);
+    boolean deduct(@RequestBody OrderRequestDTO dto);
     
     @PostMapping("/inventory/compensate")
-    String compensate(@RequestBody OrderRequestDTO dto);
+    boolean compensate(@RequestBody OrderRequestDTO dto);
 }

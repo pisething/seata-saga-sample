@@ -10,7 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class InventoryService {
 	
-	public String deduct(OrderRequestDTO dto) {
+	public boolean deduct(OrderRequestDTO dto) {
 
 		log.info("Deduct Inventory started : {}", dto);
 		// In case quantity less than 1, there is no deduct inventory
@@ -19,15 +19,15 @@ public class InventoryService {
 		}
 		String orderId = dto.getOrderId();
 		log.info("Inventory deducted for order: {}", orderId);
-		return "Inventory deducted";
+		return true;
 	}
 	
-	public String compensate(OrderRequestDTO dto) {
+	public boolean compensate(OrderRequestDTO dto) {
 
 		log.info("Compensate Deduct Inventory started : {}", dto);
 		
 		String orderId = dto.getOrderId();
 		log.info("Inventory compensation triggered for order: {}" , orderId);
-        return "Inventory compensation successful";
+        return true;
 	}
 }

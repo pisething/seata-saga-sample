@@ -19,12 +19,12 @@ public class InventoryController {
 	private final InventoryService inventoryService;
 
     @PostMapping("/deduct")
-    public String deduct(@RequestBody OrderRequestDTO dto) {
+    public boolean deduct(@RequestBody OrderRequestDTO dto) {
         return inventoryService.deduct(dto);
     }
 
     @PostMapping("/compensate")
-    public String compensate(@RequestBody OrderRequestDTO dto) {
+    public boolean compensate(@RequestBody OrderRequestDTO dto) {
         return inventoryService.compensate(dto);
     }
 }

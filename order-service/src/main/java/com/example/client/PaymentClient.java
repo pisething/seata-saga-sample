@@ -11,8 +11,8 @@ import com.example.dto.OrderRequestDTO;
 public interface PaymentClient {
 
     @PostMapping("/payment/deduct")
-    String deduct(@RequestBody OrderRequestDTO dto);
+    boolean deduct(@RequestBody OrderRequestDTO dto);
     
     @PostMapping("/payment/compensate")
-    String compensate(@RequestBody OrderRequestDTO dto);
+    boolean compensate(@RequestBody OrderRequestDTO dto);
 }
